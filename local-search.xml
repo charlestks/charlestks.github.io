@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>DISABLE UAC COMMAND</title>
+    <link href="/2026/07/21/disable%20uac%20command/"/>
+    <url>/2026/07/21/disable%20uac%20command/</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs COPY">cd\<br>cd windows<br>cd system32<br>echo Set nx AlwaysOff<br>bcdedit.exe /set nx AlwaysOff<br>echo UAC Enable<br>c:\windows\system32\REG.EXE ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v EnableLUA /t REG_DWORD /d 1 /f<br>echo STOP WINDOWS UPDATE service<br>reg add &quot;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\AU&quot; /v AUOptions /t REG_DWORD /d 0 /f<br>REG ADD HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\LanmanWorkstation\Parameters /f /v AllowInsecureGuestAuth /t REG_DWORD /d 1<br>net stop wuauserv<br>net stop cryptSvc<br>net stop bits<br>net stop dosvc<br>net stop msiserver<br>echo UAC Disable<br>c:\windows\system32\REG.EXE ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v EnableLUA /t REG_DWORD /d 0 /f<br>echo Disable Windows Delete Desktop Cnp ShortCut<br>Reg.exe add &quot;HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance&quot; /v &quot;MaintenanceDisabled&quot; /t REG_DWORD /d &quot;1&quot; /f<br>echo SMB FOXPRO OplocksDisabled<br>c:\windows\system32\REG.EXE ADD HKLM\SYSTEM\CurrentControlSet\Services\MRXSmb\Parameters /v OplocksDisabled /t 4     /d 1 /f<br>echo SMB LmCompatibilityLevel<br>c:\windows\system32\REG.EXE ADD HKLM\HKLM\SYSTEM\CurrentControlSet\Control\Lsa /v LmCompatibilityLevel /t REG_DWORD /d 1 /f<br>echo hibernate off<br>powercfg -h off<br>powercfg setactive 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c<br>echo SMB V1 ENABLE<br>DISM /Online /Enable-Feature /All /FeatureName:SMB1Protocol<br>sc.exe config lanmanworkstation depend= bowser/mrxsmb10/mrxsmb20/nsi<br>sc.exe config mrxsmb10 start= auto<br>Set-SmbClientConfiguration -RequireSecuritySignature $false <br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>command</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Command Map Drive</title>
+    <link href="/2026/07/21/command%20map%20drive/"/>
+    <url>/2026/07/21/command%20map%20drive/</url>
+    
+    <content type="html"><![CDATA[<h1 id="command-map-drive"><a href="#command-map-drive" class="headerlink" title="command map drive"></a>command map drive</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs COPY">net use r: \\sbsamba\sys1 /persistent:yes<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>command</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>RENEW WINDOW 桌面 ICON</title>
+    <link href="/2026/07/21/RENEW%20WINDOW%20%E6%A1%8C%E9%9D%A2%20ICON/"/>
+    <url>/2026/07/21/RENEW%20WINDOW%20%E6%A1%8C%E9%9D%A2%20ICON/</url>
+    
+    <content type="html"><![CDATA[<h1 id="RENEW-WINDOW-桌面-ICON"><a href="#RENEW-WINDOW-桌面-ICON" class="headerlink" title="RENEW WINDOW 桌面 ICON"></a>RENEW WINDOW 桌面 ICON</h1><p>win10 &#x2F; win11</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs COPY">ie4uinit.exe -show<br></code></pre></td></tr></table></figure><p>win7</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs COPY">ie4uinit.exe -cleariconcache<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>command</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>ERROR 3227320323</title>
+    <link href="/2026/07/21/ERROR%203227320323/"/>
+    <url>/2026/07/21/ERROR%203227320323/</url>
+    
+    <content type="html"><![CDATA[<h1 id="PowerShell-關閉-SMB-簽署-ERROR-3227320323"><a href="#PowerShell-關閉-SMB-簽署-ERROR-3227320323" class="headerlink" title="PowerShell 關閉 SMB 簽署 &#x2F; ERROR 3227320323"></a>PowerShell 關閉 SMB 簽署 &#x2F; ERROR 3227320323</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs COPY">Set-SmbClientConfiguration -RequireSecuritySignature $false<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>command</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>系統發生85錯誤</title>
+    <link href="/2026/07/21/%E7%B3%BB%E7%B5%B1%E7%99%BC%E7%94%9F85%E9%8C%AF%E8%AA%A4/"/>
+    <url>/2026/07/21/%E7%B3%BB%E7%B5%B1%E7%99%BC%E7%94%9F85%E9%8C%AF%E8%AA%A4/</url>
+    
+    <content type="html"><![CDATA[<h1 id="系統發生-85-錯誤"><a href="#系統發生-85-錯誤" class="headerlink" title="系統發生 85 錯誤"></a>系統發生 85 錯誤</h1><p>系統發生 85 錯誤<br>此行為是由下列登錄值中的 1 設定所造成：<br>regedit<br>HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SessionManager\ProtectionMode</p><p>如果設定為 1，就會發生問題。<br>如果您將設定變更為 0 並重新啟動伺服器，問題就會消失。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>command</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>系統發生1240錯誤</title>
+    <link href="/2026/07/21/%E7%B3%BB%E7%B5%B1%E7%99%BC%E7%94%9F1240%E9%8C%AF%E8%AA%A4/"/>
+    <url>/2026/07/21/%E7%B3%BB%E7%B5%B1%E7%99%BC%E7%94%9F1240%E9%8C%AF%E8%AA%A4/</url>
+    
+    <content type="html"><![CDATA[<h1 id="系統發生-1240-錯誤"><a href="#系統發生-1240-錯誤" class="headerlink" title="系統發生 1240 錯誤"></a>系統發生 1240 錯誤</h1><p>系統發生1240 錯誤<br>该帐户是没有获得授权登录从这个站点<br>資料來源:<a href="https://learn.microsoft.com/zh-tw/troubleshoot/windows-server/active-directory/account-not-authorized-login-from-this-station">帳戶沒有獲得可從此站台登入的授權</a></p><hr><p>發生此行為的原因可能是<br>本地組原則 \ 計算機設定 \ Windows 設定 \ 安全性設定 \ 本機原則 \ 安全性選項資料夾有限制性設定。</p><p>解決方法<br>若要解決此問題，請將值設定回發生全新安裝時會是什麼值。<br>檢查上述原則，並將其設定回其預設設定。<br>這些原則的預設設定如下：<br>數字簽署客戶端通訊 （一律） - 已停用<br>數字簽署伺服器通訊 （一律）- 已停用<br>數位簽署伺服器通訊 （可能的話） - 已停用<br>LAN Manager 驗證層級設定為傳送 LM 和 NTLM - 如果交涉使用 NTLMv2 會話安全性 - （預設） 傳送 LM 和 NTLM 回應<br>安全通道：數位加密或簽署安全通道資料 （一律） - 已停用<br>安全通道：需要強式 （Windows 2000 或更新版本） 會話密鑰 - 已停用</p><p>重新啟動電腦，您應該能夠加入網域。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>command</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>啟用不安全的訪客登入</title>
+    <link href="/2026/07/21/%E5%95%9F%E7%94%A8%E4%B8%8D%E5%AE%89%E5%85%A8%E7%9A%84%E8%A8%AA%E5%AE%A2%E7%99%BB%E5%85%A5/"/>
+    <url>/2026/07/21/%E5%95%9F%E7%94%A8%E4%B8%8D%E5%AE%89%E5%85%A8%E7%9A%84%E8%A8%AA%E5%AE%A2%E7%99%BB%E5%85%A5/</url>
+    
+    <content type="html"><![CDATA[<h1 id="啟用不安全的訪客登入COMMAND"><a href="#啟用不安全的訪客登入COMMAND" class="headerlink" title="啟用不安全的訪客登入COMMAND"></a>啟用不安全的訪客登入COMMAND</h1><p>選取開始，<br>輸入 gpedit.msc，<br>然後選取編輯群組原則。<br>在左窗格的本機電腦原則下，<br>瀏覽至 Computer Configuration\Administrative Templates\Network\Lanman Workstation。<br>開啟啟用不安全的訪客登入，<br>選取已啟用，然後選取確定。<br>或<br>透過已提高權限的 PowerShell 提示字元執行下列指令：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs COPY">Set-SmbClientConfiguration -EnableInsecureGuestLogons $true -Force<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>command</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>CLOSE WINDOW SLEEP MODE</title>
+    <link href="/2026/07/21/Close-Window-Sleep-Mode/"/>
+    <url>/2026/07/21/Close-Window-Sleep-Mode/</url>
+    
+    <content type="html"><![CDATA[<h1 id="關閉window休眠功能"><a href="#關閉window休眠功能" class="headerlink" title="關閉window休眠功能"></a>關閉window休眠功能</h1><p>關閉休眠功能</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs COPY">powercfg.exe /hibernate off<br></code></pre></td></tr></table></figure><p>重新啟用休眠功能</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs COPY">powercfg.exe /hibernate on<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>command</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>DELAY 15s BAT</title>
+    <link href="/2026/07/21/Delay-15s-bat/"/>
+    <url>/2026/07/21/Delay-15s-bat/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Delay-15s-bat"><a href="#Delay-15s-bat" class="headerlink" title="Delay 15s.bat"></a>Delay 15s.bat</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs COPY">@echo off<br>rem for delay..<br>timeout /t 15<br>rem starting delayed start programs<br>explorer r:<br>rem for delay..<br>timeout /t 15<br>rem starting delayed start programs<br>taskkill /im explorer.exe<br>start cmd /C &quot;ie4uinit.exe -ClearIconCache&quot;<br>start cmd /C &quot;ie4uinit.exe -show&quot;<br>exit<br>#C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>command</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Go to BIOS COMMAND</title>
+    <link href="/2026/07/20/Go-to-BIOS-COMMAND/"/>
+    <url>/2026/07/20/Go-to-BIOS-COMMAND/</url>
+    
+    <content type="html"><![CDATA[<h1 id="進入-BIOS-的命令"><a href="#進入-BIOS-的命令" class="headerlink" title="進入 BIOS 的命令"></a>進入 BIOS 的命令</h1><p>進入 BIOS 的命令：以系統管理員身分執行 CMD，輸入以下命令並重啟：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs COPY">shutdown /r /fw /t 0<br></code></pre></td></tr></table></figure><p>(此命令會重新啟動電腦並直接進入 UEFI&#x2F;BIOS 韌體設定畫面)。 </p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>command</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>SCAN WINDOW</title>
+    <link href="/2026/07/20/scan-window/"/>
+    <url>/2026/07/20/scan-window/</url>
+    
+    <content type="html"><![CDATA[<h1 id="SCAN-WINDOW"><a href="#SCAN-WINDOW" class="headerlink" title="SCAN WINDOW"></a>SCAN WINDOW</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs COPY">sfc /scannow<br></code></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs COPY">dism /online /cleanup-image /restorehealth<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>command</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="/2026/07/13/hello-world/"/>
+    <url>/2026/07/13/hello-world/</url>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  
+</search>
