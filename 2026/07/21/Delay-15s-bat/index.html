@@ -27,7 +27,7 @@
 <meta property="og:description" content="Delay 15s.bat12345678910111213@echo offrem for delay..timeout &#x2F;t 15rem starting delayed start programsexplorer r:rem for delay..timeout &#x2F;t 15rem starting delayed start programstaskkill &#x2F;im explorer.ex">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2026-07-21T03:03:08.000Z">
-<meta property="article:modified_time" content="2026-07-21T03:03:56.208Z">
+<meta property="article:modified_time" content="2026-07-21T04:11:27.992Z">
 <meta property="article:author" content="CT">
 <meta property="article:tag" content="command">
 <meta name="twitter:card" content="summary_large_image">
@@ -381,7 +381,7 @@
             
               <div class="markdown-body">
                 
-                <h1 id="Delay-15s-bat"><a href="#Delay-15s-bat" class="headerlink" title="Delay 15s.bat"></a>Delay 15s.bat</h1><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs dos">@<span class="hljs-built_in">echo</span> off<br><span class="hljs-comment">rem for delay..</span><br>timeout /t <span class="hljs-number">15</span><br><span class="hljs-comment">rem starting delayed start programs</span><br>explorer r:<br><span class="hljs-comment">rem for delay..</span><br>timeout /t <span class="hljs-number">15</span><br><span class="hljs-comment">rem starting delayed start programs</span><br><span class="hljs-built_in">taskkill</span> /im explorer.exe<br><span class="hljs-built_in">start</span> <span class="hljs-built_in">cmd</span> /C &quot;ie4uinit.exe -ClearIconCache&quot;<br><span class="hljs-built_in">start</span> <span class="hljs-built_in">cmd</span> /C &quot;ie4uinit.exe -show&quot;<br><span class="hljs-keyword">exit</span><br>#C:\ProgramData\Microsoft\Windows\<span class="hljs-built_in">Start</span> Menu\Programs\StartUp<br></code></pre></td></tr></table></figure>
+                <h1 id="Delay-15s-bat"><a href="#Delay-15s-bat" class="headerlink" title="Delay 15s.bat"></a>Delay 15s.bat</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs copy">@echo off<br>rem for delay..<br>timeout /t 15<br>rem starting delayed start programs<br>explorer r:<br>rem for delay..<br>timeout /t 15<br>rem starting delayed start programs<br>taskkill /im explorer.exe<br>start cmd /C &quot;ie4uinit.exe -ClearIconCache&quot;<br>start cmd /C &quot;ie4uinit.exe -show&quot;<br>exit<br>#C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp<br></code></pre></td></tr></table></figure>
 
                 
               </div>
