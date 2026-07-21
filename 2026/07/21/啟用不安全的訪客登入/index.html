@@ -19,15 +19,15 @@
   <meta name="author" content="CT">
   <meta name="keywords" content="">
   
-    <meta name="description" content="啟用不安全的訪客登入COMMAND啟用不安全的訪客登入 COMMAND 選取開始，輸入 gpedit.msc，然後選取編輯群組原則。在左窗格的本機電腦原則下，瀏覽至 Computer Configuration\Administrative Templates\Network\Lanman Workstation。開啟啟用不安全的訪客登入，選取已啟用，然後選取確定。或透過已提高權限的 PowerS">
+    <meta name="description" content="啟用不安全的訪客登入COMMAND選取開始，輸入 gpedit.msc，然後選取編輯群組原則。在左窗格的本機電腦原則下，瀏覽至 Computer Configuration\Administrative Templates\Network\Lanman Workstation。開啟啟用不安全的訪客登入，選取已啟用，然後選取確定。或透過已提高權限的 PowerShell 提示字元執行下列指令： 1S">
 <meta property="og:type" content="article">
 <meta property="og:title" content="啟用不安全的訪客登入">
 <meta property="og:url" content="http://example.com/2026/07/21/%E5%95%9F%E7%94%A8%E4%B8%8D%E5%AE%89%E5%85%A8%E7%9A%84%E8%A8%AA%E5%AE%A2%E7%99%BB%E5%85%A5/index.html">
 <meta property="og:site_name" content="CT Hexo Blog">
-<meta property="og:description" content="啟用不安全的訪客登入COMMAND啟用不安全的訪客登入 COMMAND 選取開始，輸入 gpedit.msc，然後選取編輯群組原則。在左窗格的本機電腦原則下，瀏覽至 Computer Configuration\Administrative Templates\Network\Lanman Workstation。開啟啟用不安全的訪客登入，選取已啟用，然後選取確定。或透過已提高權限的 PowerS">
+<meta property="og:description" content="啟用不安全的訪客登入COMMAND選取開始，輸入 gpedit.msc，然後選取編輯群組原則。在左窗格的本機電腦原則下，瀏覽至 Computer Configuration\Administrative Templates\Network\Lanman Workstation。開啟啟用不安全的訪客登入，選取已啟用，然後選取確定。或透過已提高權限的 PowerShell 提示字元執行下列指令： 1S">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2026-07-21T03:17:13.000Z">
-<meta property="article:modified_time" content="2026-07-21T03:17:50.529Z">
+<meta property="article:modified_time" content="2026-07-21T04:05:18.164Z">
 <meta property="article:author" content="CT">
 <meta property="article:tag" content="command">
 <meta name="twitter:card" content="summary_large_image">
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          271 words
+          254 words
         
       </span>
     
@@ -381,8 +381,7 @@
             
               <div class="markdown-body">
                 
-                <h1 id="啟用不安全的訪客登入COMMAND"><a href="#啟用不安全的訪客登入COMMAND" class="headerlink" title="啟用不安全的訪客登入COMMAND"></a>啟用不安全的訪客登入COMMAND</h1><p>啟用不安全的訪客登入 COMMAND</p>
-<p>選取開始，<br>輸入 gpedit.msc，<br>然後選取編輯群組原則。<br>在左窗格的本機電腦原則下，<br>瀏覽至 Computer Configuration\Administrative Templates\Network\Lanman Workstation。<br>開啟啟用不安全的訪客登入，<br>選取已啟用，然後選取確定。<br>或<br>透過已提高權限的 PowerShell 提示字元執行下列指令：</p>
+                <h1 id="啟用不安全的訪客登入COMMAND"><a href="#啟用不安全的訪客登入COMMAND" class="headerlink" title="啟用不安全的訪客登入COMMAND"></a>啟用不安全的訪客登入COMMAND</h1><p>選取開始，<br>輸入 gpedit.msc，<br>然後選取編輯群組原則。<br>在左窗格的本機電腦原則下，<br>瀏覽至 Computer Configuration\Administrative Templates\Network\Lanman Workstation。<br>開啟啟用不安全的訪客登入，<br>選取已啟用，然後選取確定。<br>或<br>透過已提高權限的 PowerShell 提示字元執行下列指令：</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">Set</span>-SmbClientConfiguration -EnableInsecureGuestLogons $<span class="hljs-keyword">true</span> -Force<br></code></pre></td></tr></table></figure>
 
                 
