@@ -4,6 +4,158 @@
   
   
   <entry>
+    <title>scan window</title>
+    <link href="/2026/07/21/disable%20uac%20command/"/>
+    <url>/2026/07/21/disable%20uac%20command/</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs nix">cd\<br>cd windows<br>cd system32<br>echo Set nx AlwaysOff<br>bcdedit.exe <span class="hljs-symbol">/set</span> nx AlwaysOff<br>echo UAC Enable<br>c:\windows\system32\REG.EXE ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System <span class="hljs-symbol">/v</span> EnableLUA <span class="hljs-symbol">/t</span> REG_DWORD <span class="hljs-symbol">/d</span> <span class="hljs-number">1</span> <span class="hljs-symbol">/f</span><br>echo STOP WINDOWS UPDATE service<br>reg add <span class="hljs-string">&quot;HKEY_LOCAL_MACHINE<span class="hljs-char escape_">\S</span>OFTWARE<span class="hljs-char escape_">\M</span>icrosoft<span class="hljs-char escape_">\W</span>indows<span class="hljs-char escape_">\C</span>urrentVersion<span class="hljs-char escape_">\W</span>indowsUpdate<span class="hljs-char escape_">\A</span>U&quot;</span> <span class="hljs-symbol">/v</span> AUOptions <span class="hljs-symbol">/t</span> REG_DWORD <span class="hljs-symbol">/d</span> <span class="hljs-number">0</span> <span class="hljs-symbol">/f</span><br>REG ADD HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\LanmanWorkstation\Parameters <span class="hljs-symbol">/f</span> <span class="hljs-symbol">/v</span> AllowInsecureGuestAuth <span class="hljs-symbol">/t</span> REG_DWORD <span class="hljs-symbol">/d</span> <span class="hljs-number">1</span><br>net stop wuauserv<br>net stop cryptSvc<br>net stop bits<br>net stop dosvc<br>net stop msiserver<br>echo UAC Disable<br>c:\windows\system32\REG.EXE ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System <span class="hljs-symbol">/v</span> EnableLUA <span class="hljs-symbol">/t</span> REG_DWORD <span class="hljs-symbol">/d</span> <span class="hljs-number">0</span> <span class="hljs-symbol">/f</span><br>echo Disable Windows Delete Desktop Cnp ShortCut<br>Reg.exe add <span class="hljs-string">&quot;HKLM<span class="hljs-char escape_">\S</span>OFTWARE<span class="hljs-char escape_">\M</span>icrosoft<span class="hljs-char escape_">\W</span>indows NT<span class="hljs-char escape_">\C</span>urrentVersion<span class="hljs-char escape_">\S</span>chedule<span class="hljs-char escape_">\M</span>aintenance&quot;</span> <span class="hljs-symbol">/v</span> <span class="hljs-string">&quot;MaintenanceDisabled&quot;</span> <span class="hljs-symbol">/t</span> REG_DWORD <span class="hljs-symbol">/d</span> <span class="hljs-string">&quot;1&quot;</span> <span class="hljs-symbol">/f</span><br>echo SMB FOXPRO OplocksDisabled<br>c:\windows\system32\REG.EXE ADD HKLM\SYSTEM\CurrentControlSet\Services\MRXSmb\Parameters <span class="hljs-symbol">/v</span> OplocksDisabled <span class="hljs-symbol">/t</span> <span class="hljs-number">4</span>     <span class="hljs-symbol">/d</span> <span class="hljs-number">1</span> <span class="hljs-symbol">/f</span><br>echo SMB LmCompatibilityLevel<br>c:\windows\system32\REG.EXE ADD HKLM\HKLM\SYSTEM\CurrentControlSet\Control\Lsa <span class="hljs-symbol">/v</span> LmCompatibilityLevel <span class="hljs-symbol">/t</span> REG_DWORD <span class="hljs-symbol">/d</span> <span class="hljs-number">1</span> <span class="hljs-symbol">/f</span><br>echo hibernate off<br>powercfg <span class="hljs-operator">-</span>h off<br>powercfg setactive <span class="hljs-number">8</span>c5e7fda-e8bf-<span class="hljs-number">4</span>a96-<span class="hljs-number">9</span>a85-a6e23a8c635c<br>echo SMB V1 ENABLE<br>DISM <span class="hljs-symbol">/Online</span> <span class="hljs-symbol">/Enable-Feature</span> <span class="hljs-symbol">/All</span> <span class="hljs-operator">/</span>FeatureName:SMB1Protocol<br>sc.exe config lanmanworkstation depend<span class="hljs-operator">=</span> bowser<span class="hljs-symbol">/mrxsmb10/mrxsmb20/nsi</span><br>sc.exe config mrxsmb10 start<span class="hljs-operator">=</span> auto<br>Set-SmbClientConfiguration <span class="hljs-operator">-</span>RequireSecuritySignature $<span class="hljs-literal">false</span> <br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>command</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>scan window</title>
+    <link href="/2026/07/21/command%20map%20drive/"/>
+    <url>/2026/07/21/command%20map%20drive/</url>
+    
+    <content type="html"><![CDATA[<h1 id="command-map-drive"><a href="#command-map-drive" class="headerlink" title="command map drive"></a>command map drive</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">net use r: \\sbsamba\sys1 /persistent:<span class="hljs-built_in">yes</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>command</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>RENEW WINDOW 桌面 ICON</title>
+    <link href="/2026/07/21/RENEW%20WINDOW%20%E6%A1%8C%E9%9D%A2%20ICON/"/>
+    <url>/2026/07/21/RENEW%20WINDOW%20%E6%A1%8C%E9%9D%A2%20ICON/</url>
+    
+    <content type="html"><![CDATA[<h1 id="RENEW-WINDOW-桌面-ICON"><a href="#RENEW-WINDOW-桌面-ICON" class="headerlink" title="RENEW WINDOW 桌面 ICON"></a>RENEW WINDOW 桌面 ICON</h1><p>win10 &#x2F; win11</p><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dart">ie4uinit.exe -<span class="hljs-keyword">show</span><br></code></pre></td></tr></table></figure><p>win7</p><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">ie4uinit<span class="hljs-selector-class">.exe</span> -cleariconcache<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>command</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>PowerShell 關閉 SMB 簽署 / ERROR 3227320323</title>
+    <link href="/2026/07/21/ERROR%203227320323/"/>
+    <url>/2026/07/21/ERROR%203227320323/</url>
+    
+    <content type="html"><![CDATA[<h1 id="PowerShell-關閉-SMB-簽署-ERROR-3227320323"><a href="#PowerShell-關閉-SMB-簽署-ERROR-3227320323" class="headerlink" title="PowerShell 關閉 SMB 簽署 &#x2F; ERROR 3227320323"></a>PowerShell 關閉 SMB 簽署 &#x2F; ERROR 3227320323</h1><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">Set</span>-SmbClientConfiguration -RequireSecuritySignature $<span class="hljs-keyword">false</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>command</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>系統發生85錯誤</title>
+    <link href="/2026/07/21/%E7%B3%BB%E7%B5%B1%E7%99%BC%E7%94%9F85%E9%8C%AF%E8%AA%A4/"/>
+    <url>/2026/07/21/%E7%B3%BB%E7%B5%B1%E7%99%BC%E7%94%9F85%E9%8C%AF%E8%AA%A4/</url>
+    
+    <content type="html"><![CDATA[<h1 id="系統發生-85-錯誤"><a href="#系統發生-85-錯誤" class="headerlink" title="系統發生 85 錯誤"></a>系統發生 85 錯誤</h1><p>系統發生 85 錯誤<br>此行為是由下列登錄值中的 1 設定所造成：<br>regedit<br>HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SessionManager\ProtectionMode</p><p>如果設定為 1，就會發生問題。<br>如果您將設定變更為 0 並重新啟動伺服器，問題就會消失。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>command</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>系統發生1240錯誤</title>
+    <link href="/2026/07/21/%E7%B3%BB%E7%B5%B1%E7%99%BC%E7%94%9F1240%E9%8C%AF%E8%AA%A4/"/>
+    <url>/2026/07/21/%E7%B3%BB%E7%B5%B1%E7%99%BC%E7%94%9F1240%E9%8C%AF%E8%AA%A4/</url>
+    
+    <content type="html"><![CDATA[<h1 id="系統發生-1240-錯誤"><a href="#系統發生-1240-錯誤" class="headerlink" title="系統發生 1240 錯誤"></a>系統發生 1240 錯誤</h1><p>系統發生1240 錯誤</p><h2 id="该帐户是没有获得授权登录从这个站点帳戶沒有獲得可從此站台登入的授權https-learn-microsoft-com-zh-tw-troubleshoot-windows-server-active-directory-account-not-authorized-login-from-this-station"><a href="#该帐户是没有获得授权登录从这个站点帳戶沒有獲得可從此站台登入的授權https-learn-microsoft-com-zh-tw-troubleshoot-windows-server-active-directory-account-not-authorized-login-from-this-station" class="headerlink" title="该帐户是没有获得授权登录从这个站点帳戶沒有獲得可從此站台登入的授權https://learn.microsoft.com/zh-tw/troubleshoot/windows-server/active-directory/account-not-authorized-login-from-this-station"></a>该帐户是没有获得授权登录从这个站点<br>帳戶沒有獲得可從此站台登入的授權<br><a href="https://learn.microsoft.com/zh-tw/troubleshoot/windows-server/active-directory/account-not-authorized-login-from-this-station">https://learn.microsoft.com/zh-tw/troubleshoot/windows-server/active-directory/account-not-authorized-login-from-this-station</a></h2><p>發生此行為的原因可能是<br>本地組原則 \ 計算機設定 \ Windows 設定 \ 安全性設定 \ 本機原則 \ 安全性選項資料夾有限制性設定。</p><p>解決方法<br>若要解決此問題，請將值設定回發生全新安裝時會是什麼值。<br>檢查上述原則，並將其設定回其預設設定。<br>這些原則的預設設定如下：<br>數字簽署客戶端通訊 （一律） - 已停用<br>數字簽署伺服器通訊 （一律）- 已停用<br>數位簽署伺服器通訊 （可能的話） - 已停用<br>LAN Manager 驗證層級設定為傳送 LM 和 NTLM - 如果交涉使用 NTLMv2 會話安全性 - （預設） 傳送 LM 和 NTLM 回應<br>安全通道：數位加密或簽署安全通道資料 （一律） - 已停用<br>安全通道：需要強式 （Windows 2000 或更新版本） 會話密鑰 - 已停用</p><p>重新啟動電腦，您應該能夠加入網域。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>command</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>啟用不安全的訪客登入</title>
+    <link href="/2026/07/21/%E5%95%9F%E7%94%A8%E4%B8%8D%E5%AE%89%E5%85%A8%E7%9A%84%E8%A8%AA%E5%AE%A2%E7%99%BB%E5%85%A5/"/>
+    <url>/2026/07/21/%E5%95%9F%E7%94%A8%E4%B8%8D%E5%AE%89%E5%85%A8%E7%9A%84%E8%A8%AA%E5%AE%A2%E7%99%BB%E5%85%A5/</url>
+    
+    <content type="html"><![CDATA[<h1 id="啟用不安全的訪客登入COMMAND"><a href="#啟用不安全的訪客登入COMMAND" class="headerlink" title="啟用不安全的訪客登入COMMAND"></a>啟用不安全的訪客登入COMMAND</h1><p>啟用不安全的訪客登入 COMMAND</p><p>選取開始，<br>輸入 gpedit.msc，<br>然後選取編輯群組原則。<br>在左窗格的本機電腦原則下，<br>瀏覽至 Computer Configuration\Administrative Templates\Network\Lanman Workstation。<br>開啟啟用不安全的訪客登入，<br>選取已啟用，然後選取確定。<br>或<br>透過已提高權限的 PowerShell 提示字元執行下列指令：</p><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">Set</span>-SmbClientConfiguration -EnableInsecureGuestLogons $<span class="hljs-keyword">true</span> -Force<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>command</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Close Window Sleep Mode</title>
+    <link href="/2026/07/21/Close-Window-Sleep-Mode/"/>
+    <url>/2026/07/21/Close-Window-Sleep-Mode/</url>
+    
+    <content type="html"><![CDATA[<h1 id="關閉window休眠功能"><a href="#關閉window休眠功能" class="headerlink" title="關閉window休眠功能"></a>關閉window休眠功能</h1><p>關閉休眠功能</p><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">powercfg</span>.exe /hibernate <span class="hljs-literal">off</span><br></code></pre></td></tr></table></figure><p>重新啟用休眠功能</p><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim">powercfg.<span class="hljs-keyword">exe</span> /hibernate <span class="hljs-keyword">on</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>command</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Delay 15s bat</title>
     <link href="/2026/07/21/Delay-15s-bat/"/>
     <url>/2026/07/21/Delay-15s-bat/</url>
