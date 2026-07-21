@@ -4,13 +4,38 @@
   
   
   <entry>
+    <title>Delay 15s bat</title>
+    <link href="/2026/07/21/Delay-15s-bat/"/>
+    <url>/2026/07/21/Delay-15s-bat/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Delay-15s-bat"><a href="#Delay-15s-bat" class="headerlink" title="Delay 15s.bat"></a>Delay 15s.bat</h1><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs dos">@<span class="hljs-built_in">echo</span> off<br><span class="hljs-comment">rem for delay..</span><br>timeout /t <span class="hljs-number">15</span><br><span class="hljs-comment">rem starting delayed start programs</span><br>explorer r:<br><span class="hljs-comment">rem for delay..</span><br>timeout /t <span class="hljs-number">15</span><br><span class="hljs-comment">rem starting delayed start programs</span><br><span class="hljs-built_in">taskkill</span> /im explorer.exe<br><span class="hljs-built_in">start</span> <span class="hljs-built_in">cmd</span> /C &quot;ie4uinit.exe -ClearIconCache&quot;<br><span class="hljs-built_in">start</span> <span class="hljs-built_in">cmd</span> /C &quot;ie4uinit.exe -show&quot;<br><span class="hljs-keyword">exit</span><br>#C:\ProgramData\Microsoft\Windows\<span class="hljs-built_in">Start</span> Menu\Programs\StartUp<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>command</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Go to BIOS COMMAND</title>
     <link href="/2026/07/20/Go-to-BIOS-COMMAND/"/>
     <url>/2026/07/20/Go-to-BIOS-COMMAND/</url>
     
-    <content type="html"><![CDATA[<h1 id="進入-BIOS-的命令"><a href="#進入-BIOS-的命令" class="headerlink" title="進入 BIOS 的命令"></a>進入 BIOS 的命令</h1><p>進入 BIOS 的命令：以系統管理員身分執行 CMD，輸入以下命令並重啟：</p><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli"><span class="hljs-keyword">shutdown</span> <span class="hljs-string">/r</span> <span class="hljs-string">/fw</span> <span class="hljs-string">/t</span> 0<br></code></pre></td></tr></table></figure><p>(此命令會重新啟動電腦並直接進入 UEFI&#x2F;BIOS 韌體設定畫面)。 </p>]]></content>
+    <content type="html"><![CDATA[<h1 id="進入-BIOS-的命令"><a href="#進入-BIOS-的命令" class="headerlink" title="進入 BIOS 的命令"></a>進入 BIOS 的命令</h1><p>進入 BIOS 的命令：以系統管理員身分執行 CMD，輸入以下命令並重啟：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">shutdown /r /fw /t 0<br></code></pre></td></tr></table></figure><p>(此命令會重新啟動電腦並直接進入 UEFI&#x2F;BIOS 韌體設定畫面)。 </p>]]></content>
     
     
+    
+    <tags>
+      
+      <tag>command</tag>
+      
+    </tags>
     
   </entry>
   
@@ -24,6 +49,12 @@
     <content type="html"><![CDATA[<h1 id="SCAN-WINDOW"><a href="#SCAN-WINDOW" class="headerlink" title="SCAN WINDOW"></a>SCAN WINDOW</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sfc /scannow<br></code></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">dism /online /cleanup-image /restorehealth<br></code></pre></td></tr></table></figure><p>#command </p>]]></content>
     
     
+    
+    <tags>
+      
+      <tag>command</tag>
+      
+    </tags>
     
   </entry>
   
