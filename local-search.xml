@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>開機自動執行註冊表</title>
+    <link href="/2026/07/31/%E9%96%8B%E6%A9%9F%E8%87%AA%E5%8B%95%E5%9F%B7%E8%A1%8C%E8%A8%BB%E5%86%8A%E8%A1%A8/"/>
+    <url>/2026/07/31/%E9%96%8B%E6%A9%9F%E8%87%AA%E5%8B%95%E5%9F%B7%E8%A1%8C%E8%A8%BB%E5%86%8A%E8%A1%A8/</url>
+    
+    <content type="html"><![CDATA[<h1 id="開機自動執行註冊表"><a href="#開機自動執行註冊表" class="headerlink" title="開機自動執行註冊表"></a>開機自動執行註冊表</h1><p>要在 Windows 系統中設定開機自動執行註冊表（.reg 檔案），最簡單有效的方法是建立一個批次檔（.bat），並將其放置於系統的「啟動」資料夾中，這樣每次開機都會自動匯入該註冊表設定。</p><p>請按照以下步驟操作：</p><ul><li>建立批次檔：在桌面空白處點擊右鍵，選擇「新增」&gt;「文字文件」。</li><li>輸入指令：打開文件，輸入以下內容（請將 C:\路徑\你的檔案.reg 替換為你的 .reg 檔案實際存放路徑）：</li></ul><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs nix">@echo off<br>regedit <span class="hljs-symbol">/s</span> <span class="hljs-string">&quot;C:<span class="hljs-char escape_">\路</span>徑<span class="hljs-char escape_">\你</span>的檔案.reg&quot;</span><br></code></pre></td></tr></table></figure><p>(註：&#x2F;s 參數代表「無聲模式」，匯入時不會跳出確認視窗)<br><font color=red><em>(註：&#x2F;s 參數代表「無聲模式」，匯入時不會跳出確認視窗)</em></font></p><ul><li>存檔並更改副檔名：點擊左上角「檔案」&gt;「另存新檔」，將存檔類型改為「所有檔案」，並將檔名命名為 auto_reg.bat。</li><li>移至啟動資料夾：按下鍵盤上的 Win + R 鍵，輸入 shell:startup 並按下 Enter。<br>將剛建立的 auto_reg.bat 檔案剪下並貼上到開啟的這個「啟動」資料夾中。</li></ul><p>#reg #bat #auto </p>]]></content>
+    
+    
+    <categories>
+      
+      <category>window</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>reg</tag>
+      
+      <tag>bat</tag>
+      
+      <tag>auto</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>HEXO FLUID SETTING</title>
     <link href="/2026/07/27/HEXO%20FLUID%20SETTING/"/>
     <url>/2026/07/27/HEXO%20FLUID%20SETTING/</url>
